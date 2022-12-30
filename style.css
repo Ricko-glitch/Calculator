@@ -109,4 +109,5 @@ input.right{
 .inp_con_1 input:hover{
     background-color: #222;
     color: white;
+    cursor:  pointer;
 }
