@@ -7,51 +7,78 @@
     <title>Calculator</title>
 </head>
 <body>
-    
-<div class="calculator">
-    <input type="text" id="input1" value="0">
-    <select id="operator">
-      <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">*</option>
-      <option value="/">/</option>
-    </select>
-    <input type="text" id="input2" value="0">
-    <input type="button" value="=" onclick="calculate()">
-    <input type="text" id="result" value="0" readonly>
+    <!-- HTML -->
+<div id="calculator">
+    <div class="display">0</div>
+    <button class="button">7</button>
+    <button class="button">8</button>
+    <button class="button">9</button>
+    <button class="button operator">+</button>
+    <button class="button">4</button>
+    <button class="button">5</button>
+    <button class="button">6</button>
+    <button class="button operator">-</button>
+    <button class="button">1</button>
+    <button class="button">2</button>
+    <button class="button">3</button>
+    <button class="button operator">*</button>
+    <button class="button">0</button>
+    <button class="button">.</button>
+    <button class="button operator">/</button>
+    <button class="button equal-to">=</button>
   </div>
   
   <script>
-    function calculate() {
-      // Get the values from the inputs
-      const input1 = document.getElementById('input1').value;
-      const input2 = document.getElementById('input2').value;
-      const operator = document.getElementById('operator').value;
-  
-      // Convert the inputs to numbers
-      const num1 = parseFloat(input1);
-      const num2 = parseFloat(input2);
-  
-      // Perform the calculation
-      let result;
-      switch (operator) {
-        case '+':
-          result = num1 + num2;
-          break;
-        case '-':
-          result = num1 - num2;
-          break;
-        case '*':
-          result = num1 * num2;
-          break;
-        case '/':
-          result = num1 / num2;
-          break;
-      }
-  
-      // Update the result input with the calculated value
-      document.getElementById('result').value = result;
+    // JavaScript
+const calculator = document.getElementById('calculator');
+const display = calculator.querySelector('.display');
+const buttons = calculator.querySelectorAll('.button');
+
+let operator = '';
+let operand1 = 0;
+let operand2 = null;
+
+function handleClick(event) {
+  const button = event.target;
+  const value = button.textContent;
+  if (value === '+' || value === '-' || value === '*' || value === '/') {
+    operator = value;
+    operand1 = parseFloat(display.textContent);
+    display.textContent = '';
+  } else if (value === '=') {
+    operand2 = parseFloat(display.textContent);
+    let result;
+    switch(operator) {
+      case '+':
+        result = operand1 + operand2;
+        break;
+      case '-':
+        result = operand1 - operand2;
+        break;
+      case '*':
+        result = operand1 * operand2;
+        break;
+      case '/':
+        result = operand1 / operand2;
+        break;
+      default:
+        result = 0;
     }
+    display.textContent = result;
+    operator = '';
+    operand1 = 0;
+    operand2 = null;
+  } else {
+    if (display.textContent === '0') {
+      display.textContent = value;
+    } else {
+      display.textContent += value;
+    }
+  }
+}
+
+buttons.forEach(button => button.addEventListener('click', handleClick));
+
   </script>
 </body>
 </html>
