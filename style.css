@@ -3,7 +3,7 @@
 *::befoe{
 	margin: 0;
 	padding: 0;
-	box-size: border-box;
+	box-sizing: border-box;
 }
 body{
 	width: 100vw;
@@ -105,4 +105,8 @@ input.right{
 	color: lightblue;
 	font-size: 1.5rem;
 	max-width: 60px !important;
+}
+.inp_con_1 input:hover{
+    background-color: #222;
+    color: white;
 }
