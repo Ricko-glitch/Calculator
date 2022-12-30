@@ -1,0 +1,108 @@
+*,
+*::after,
+*::befoe{
+	margin: 0;
+	padding: 0;
+	box-size: border-box;
+}
+body{
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+}
+body .wrapper{
+	width: 100%;
+	max-width: max-content;
+	padding: 20px;
+	display: grid;
+	place-items: center;
+	background-color: red;
+	background-color: #333;
+	box-shadow: 0 10px 16px -11px #555;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.wrapper .form1{
+	width: 100%;
+	max-width: 350px;
+	min-height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+input{
+	border: none;
+	outline: none;
+	background-color: #333;
+	color: lightgrey;
+}
+.wrapper * {
+	transition: all .7s ease;
+}
+.form1 #calc{
+	width: 100%;
+	min-height: 60px;
+	background-color: #111;
+	font-size: 2.3rem;
+	color: lightgrey;
+	text-align: right;
+	padding: 10px 0;
+	padding-right: 30px;
+	color: grey;
+}
+.form1 #show{
+	padding-right: 30px;
+	width: 100%;
+	padding: 15px 0;
+	min-height: 80px;
+	background-color: #111;
+	font-size: 3.5rem;
+	color: lightgrey;
+	text-align: right;
+	padding: 10px;
+	padding-right: 30px;
+}
+.form1 .inp_con_1{
+	width: 100%;
+	min-height: 40px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	flex-direction: row;
+}
+.inp_con_1 input,
+.inp_con_1 span{
+	width: 100%;
+	height: 75px;
+	font-size: 1.2rem;
+}
+.equal{
+	color: red;
+	width: 90px;
+	height: 60px;
+	background-color: blue;
+	border-radius: 15px;
+	display: block;
+}
+.equal::after{
+	content: '=';
+	display: grid;
+	place-items: center;
+	font-size: 3rem;
+	width: 60px;
+	height: 150px;
+	position: absolute;
+	background-color: #111;
+	color: lightgrey;
+	bottom: 0;
+	right: 0;
+	border-radius: 15px;
+}
+input.right{
+	min-width: 60px !important;
+	color: lightblue;
+	font-size: 1.5rem;
+	max-width: 60px !important;
+}

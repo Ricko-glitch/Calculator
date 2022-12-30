@@ -5,80 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HTML -->
-<div id="calculator">
-    <div class="display">0</div>
-    <button class="button">7</button>
-    <button class="button">8</button>
-    <button class="button">9</button>
-    <button class="button operator">+</button>
-    <button class="button">4</button>
-    <button class="button">5</button>
-    <button class="button">6</button>
-    <button class="button operator">-</button>
-    <button class="button">1</button>
-    <button class="button">2</button>
-    <button class="button">3</button>
-    <button class="button operator">*</button>
-    <button class="button">0</button>
-    <button class="button">.</button>
-    <button class="button operator">/</button>
-    <button class="button equal-to">=</button>
-  </div>
-  
-  <script>
-    // JavaScript
-const calculator = document.getElementById('calculator');
-const display = calculator.querySelector('.display');
-const buttons = calculator.querySelectorAll('.button');
+	<div class= "wrapper">  
+		<form name = "form1" class="form1">  
+		
+			<input id = "show" type ="text" name = "show" disabled>
+			<input id = "calc" type ="text" name = "answer" disabled placeholder="0">
 
-let operator = '';
-let operand1 = 0;
-let operand2 = null;
+			<! -- input_container_1 = inp_con_1 -->
+			<div class="inp_con_1">
+				<input type = "button" value = "C" onclick = "form1.answer.value = '';form1.show.value = ''" id= "clear">
+				<input type = "button" value = "/" onclick = "form1.answer.value += '/' ">
+				<input type = "button" value = "x" onclick = "form1.answer.value += '*' ">
+				<input style="color: red;"  type="button" value="<" onclick="form1.answer.value = form1.answer.value.slice(0, -1)">
+			</div>
 
-function handleClick(event) {
-  const button = event.target;
-  const value = button.textContent;
-  if (value === '+' || value === '-' || value === '*' || value === '/') {
-    operator = value;
-    operand1 = parseFloat(display.textContent);
-    display.textContent = '';
-  } else if (value === '=') {
-    operand2 = parseFloat(display.textContent);
-    let result;
-    switch(operator) {
-      case '+':
-        result = operand1 + operand2;
-        break;
-      case '-':
-        result = operand1 - operand2;
-        break;
-      case '*':
-        result = operand1 * operand2;
-        break;
-      case '/':
-        result = operand1 / operand2;
-        break;
-      default:
-        result = 0;
-    }
-    display.textContent = result;
-    operator = '';
-    operand1 = 0;
-    operand2 = null;
-  } else {
-    if (display.textContent === '0') {
-      display.textContent = value;
-    } else {
-      display.textContent += value;
-    }
-  }
-}
+			<div class="inp_con_1">
+				<input type = "button" value = "7" onclick = "form1.answer.value += '7' ">
+				<input type = "button" value = "8" onclick = "form1.answer.value += '8' ">
+				<input type = "button" value = "9" onclick = "form1.answer.value += '9' ">
+				<input class="right" type = "button" value = "-" onclick = "form1.answer.value += '-' ">
+			</div>
 
-buttons.forEach(button => button.addEventListener('click', handleClick));
 
-  </script>
+
+			<div class="inp_con_1">
+				<input type = "button" value = "4" onclick = "form1.answer.value += '4' ">
+				<input type = "button" value = "5" onclick = "form1.answer.value += '5' ">
+				<input type = "button" value = "6" onclick = "form1.answer.value += '6' ">
+				<input class="right" type = "button" value = "+" onclick = "form1.answer.value += '+' ">
+			</div>
+
+
+			<div class="inp_con_1">
+				<input type = "button" value = "1" onclick = "form1.answer.value += '1' ">
+				<input type = "button" value = "2" onclick = "form1.answer.value += '2' ">
+				<input type = "button" value = "3" onclick = "form1.answer.value += '3' ">
+				<input class="right" type = "button" value = "=" onclick = "form1.show.value = eval(form1.answer.value)"> 
+			</div>
+
+			<div class="inp_con_1" style="position: relative">
+				<input type = "button" value = "%" onclick = "form1.answer.value += '%' ">
+				<input type = "button" value = "0" onclick = "form1.answer.value += '0' ">
+				<input type = "button" value = "." onclick = "form1.answer.value += '.' ">
+				<span style="width: 240px !important;" class="equal" onclick="form1.show.value = eval(form1.answer.value)"></span> 
+			</div>
+		</form>
+	</div>
 </body>
 </html>
